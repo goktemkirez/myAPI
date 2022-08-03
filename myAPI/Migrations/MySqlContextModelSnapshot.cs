@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using myAPI.DataAccessLayer;
+using myAPI.DataAccessLayer.Concrete;
 
 #nullable disable
 
 namespace myAPI.Migrations
 {
-    [DbContext(typeof(MySqlContext))]
+    [DbContext(typeof(Context))]
     partial class MySqlContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

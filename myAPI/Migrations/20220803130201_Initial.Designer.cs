@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using myAPI.DataAccessLayer;
+using myAPI.DataAccessLayer.Concrete;
 
 #nullable disable
 
 namespace myAPI.Migrations
 {
-    [DbContext(typeof(MySqlContext))]
+    [DbContext(typeof(Context))]
     [Migration("20220803130201_Initial")]
     partial class Initial
     {

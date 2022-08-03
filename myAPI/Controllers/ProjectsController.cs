@@ -1,27 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using myAPI.BussinessLayer.Concrete;
 using myAPI.DataAccessLayer;
+using myAPI.DataAccessLayer.EntityFramework;
 using myAPI.EntityLayer;
 
 namespace myAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProjectController : Controller
+    public class ProjectsController : Controller
     {
+        ProjectManager manager = new ProjectManager(new EfProjectRepository());
+
         [HttpGet]
         public IActionResult All()
         {
-            using var c = new MySqlContext();
-            var values = c.Projects?.ToList();
+            var values = manager.TGetAll();
             return Ok(values);
         }
 
         [HttpPost]
         public IActionResult Add(Project project)
         {
-            using var c = new MySqlContext();
-            c.Add(project);
-            c.SaveChanges();
+            manager.TAdd(project);
             return Ok(project);
         }
     }

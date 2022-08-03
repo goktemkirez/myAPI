@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using myAPI.EntityLayer;
 
-namespace myAPI.DataAccessLayer
+namespace myAPI.DataAccessLayer.Concrete
 {
-    public class MySqlContext : DbContext
+    public class Context : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
