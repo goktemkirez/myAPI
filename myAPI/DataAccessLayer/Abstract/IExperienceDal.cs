@@ -6,5 +6,7 @@ namespace myAPI.DataAccessLayer.Abstract
     public interface IExperienceDal : IGenericDal<Experience>
     {
         List<Experience> GetExperiencesWithNestedTables();
+        Experience GetByIdWithNestedTables(int id);
+        void DeleteWithNestedTables(Experience experience);
     }
 }

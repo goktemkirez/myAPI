@@ -20,7 +20,7 @@ namespace myAPI.BussinessLayer.Concrete
 
         public void TDelete(Experience t)
         {
-            throw new NotImplementedException();
+            _experienceDal.Delete(t);
         }
 
         public List<Experience> TGetExperiencesWithNestedTables()
@@ -30,7 +30,7 @@ namespace myAPI.BussinessLayer.Concrete
 
         public Experience TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _experienceDal.GetById(id);
         }
 
         public void TUpdate(Experience t)
@@ -41,6 +41,16 @@ namespace myAPI.BussinessLayer.Concrete
         public List<Experience> TGetAll()
         {
             throw new NotImplementedException();
+        }
+
+        public void TDeleteWithNestedTables(Experience experience)
+        {
+            _experienceDal.DeleteWithNestedTables(experience);
+        }
+
+        public Experience TGetByIdWithNestedTables(int id)
+        {
+            return _experienceDal.GetByIdWithNestedTables(id);
         }
     }
 }

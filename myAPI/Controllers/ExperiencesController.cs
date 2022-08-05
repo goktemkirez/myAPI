@@ -16,5 +16,25 @@ namespace myAPI.Controllers
             var values = manager.TGetExperiencesWithNestedTables();
             return Ok(values);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var experience = manager.TGetByIdWithNestedTables(id);
+            return experience == null ? NotFound() : Ok(experience);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var experience = manager.TGetByIdWithNestedTables(id);
+            if (experience == null)
+                return NotFound();
+            else
+            {
+                manager.TDeleteWithNestedTables(experience);
+                return Ok();
+            }
+        }
     }
 }
