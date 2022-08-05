@@ -1,7 +1,7 @@
 ﻿using myAPI.DataAccessLayer.Abstract;
-using myAPI.DataAccessLayer.Concrete;
+using myAPI.DataAccessLayer.Contexts;
 
-namespace myAPI.DataAccessLayer.Repositories
+namespace myAPI.DataAccessLayer.Concrete.EntityFramework
 {
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {

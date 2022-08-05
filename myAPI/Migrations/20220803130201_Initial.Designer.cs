@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using myAPI.DataAccessLayer.Concrete;
+using myAPI.DataAccessLayer.Contexts;
 
 #nullable disable
 

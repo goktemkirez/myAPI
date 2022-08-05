@@ -2,7 +2,7 @@
 using myAPI.BussinessLayer.Concrete;
 using myAPI.DataAccessLayer;
 using myAPI.DataAccessLayer.EntityFramework;
-using myAPI.EntityLayer;
+using myAPI.EntityLayer.Concrete;
 
 namespace myAPI.Controllers
 {
@@ -30,10 +30,7 @@ namespace myAPI.Controllers
         public IActionResult GetById(int id)
         {
             var project = manager.TGetById(id);
-            if(project == null)
-                return NotFound();
-            else
-                return Ok(project);
+            return project == null ? NotFound() : Ok(project);
         }
 
 
@@ -44,29 +41,25 @@ namespace myAPI.Controllers
             if (project == null)
                 return NotFound();
             else
+            {
                 manager.TDelete(project);
                 return Ok();
+            }
         }
 
 
         [HttpPut]
         public IActionResult Update(Project project)
         {
-            if(project == null)
-                return BadRequest(project);
-            var selectedProject = manager.TGetById(project.ProjectID);
-            if (selectedProject == null)
-                return NotFound();
-            else
+            try
             {
-                selectedProject.ProjectID = project.ProjectID;
-                selectedProject.Title = project.Title;
-                selectedProject.Detail = project.Detail;
-                selectedProject.VideoUrl = project.VideoUrl;
-                selectedProject.CodeUrl = project.CodeUrl;
-                selectedProject.LiveUrl = project.LiveUrl;
-                manager.TUpdate(selectedProject);
-                return Ok();
+                manager.TUpdate(project);
+                return Ok(project);
+
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
             }
         }
     }

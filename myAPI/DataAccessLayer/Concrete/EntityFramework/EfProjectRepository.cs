@@ -1,6 +1,6 @@
 ﻿using myAPI.DataAccessLayer.Abstract;
-using myAPI.DataAccessLayer.Repositories;
-using myAPI.EntityLayer;
+using myAPI.DataAccessLayer.Concrete.EntityFramework;
+using myAPI.EntityLayer.Concrete;
 
 namespace myAPI.DataAccessLayer.EntityFramework
 {

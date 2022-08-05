@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace myAPI.EntityLayer
+namespace myAPI.EntityLayer.Concrete
 {
     public class Project
     {

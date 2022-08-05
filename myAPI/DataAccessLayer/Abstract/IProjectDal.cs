@@ -1,4 +1,4 @@
-﻿using myAPI.EntityLayer;
+﻿using myAPI.EntityLayer.Concrete;
 
 namespace myAPI.DataAccessLayer.Abstract
 {

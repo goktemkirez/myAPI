@@ -1,6 +1,6 @@
 ﻿using myAPI.BussinessLayer.Abstract;
 using myAPI.DataAccessLayer.Abstract;
-using myAPI.EntityLayer;
+using myAPI.EntityLayer.Concrete;
 
 namespace myAPI.BussinessLayer.Concrete
 {

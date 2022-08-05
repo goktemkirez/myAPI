@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using myAPI.DataAccessLayer.Contexts;
 
@@ -10,16 +11,17 @@ using myAPI.DataAccessLayer.Contexts;
 namespace myAPI.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class MySqlContextModelSnapshot : ModelSnapshot
+    [Migration("20220804142440_Experiences_table_added")]
+    partial class Experiences_table_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("myAPI.EntityLayer.Concrete.Experience", b =>
+            modelBuilder.Entity("myAPI.EntityLayer.Experience", b =>
                 {
                     b.Property<int>("ExperienceID")
                         .ValueGeneratedOnAdd()
@@ -45,7 +47,7 @@ namespace myAPI.Migrations
                     b.ToTable("Experiences");
                 });
 
-            modelBuilder.Entity("myAPI.EntityLayer.Concrete.ExperienceProject", b =>
+            modelBuilder.Entity("myAPI.EntityLayer.ExperienceProject", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -64,7 +66,7 @@ namespace myAPI.Migrations
                     b.ToTable("ExperienceProjects");
                 });
 
-            modelBuilder.Entity("myAPI.EntityLayer.Concrete.ExperienceResponsibility", b =>
+            modelBuilder.Entity("myAPI.EntityLayer.ExperienceResponsibility", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -83,7 +85,7 @@ namespace myAPI.Migrations
                     b.ToTable("ExperienceResponsibilities");
                 });
 
-            modelBuilder.Entity("myAPI.EntityLayer.Concrete.Project", b =>
+            modelBuilder.Entity("myAPI.EntityLayer.Project", b =>
                 {
                     b.Property<int>("ProjectID")
                         .ValueGeneratedOnAdd()
@@ -109,21 +111,25 @@ namespace myAPI.Migrations
                     b.ToTable("Projects");
                 });
 
-            modelBuilder.Entity("myAPI.EntityLayer.Concrete.ExperienceProject", b =>
+            modelBuilder.Entity("myAPI.EntityLayer.ExperienceProject", b =>
                 {
-                    b.HasOne("myAPI.EntityLayer.Concrete.Experience", null)
+                    b.HasOne("myAPI.EntityLayer.Experience", "Experience")
                         .WithMany("ExperienceProjects")
                         .HasForeignKey("ExperienceID");
+
+                    b.Navigation("Experience");
                 });
 
-            modelBuilder.Entity("myAPI.EntityLayer.Concrete.ExperienceResponsibility", b =>
+            modelBuilder.Entity("myAPI.EntityLayer.ExperienceResponsibility", b =>
                 {
-                    b.HasOne("myAPI.EntityLayer.Concrete.Experience", null)
+                    b.HasOne("myAPI.EntityLayer.Experience", "Experience")
                         .WithMany("ExperienceResponsibilities")
                         .HasForeignKey("ExperienceID");
+
+                    b.Navigation("Experience");
                 });
 
-            modelBuilder.Entity("myAPI.EntityLayer.Concrete.Experience", b =>
+            modelBuilder.Entity("myAPI.EntityLayer.Experience", b =>
                 {
                     b.Navigation("ExperienceProjects");
 

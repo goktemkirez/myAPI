@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using myAPI.EntityLayer;
+using myAPI.EntityLayer.Concrete;
 
-namespace myAPI.DataAccessLayer.Concrete
+namespace myAPI.DataAccessLayer.Contexts
 {
     public class Context : DbContext
     {
@@ -12,5 +12,8 @@ namespace myAPI.DataAccessLayer.Concrete
         }
 
         public DbSet<Project>? Projects { get; set; }
+        public DbSet<Experience>? Experiences { get; set; }
+        public DbSet<ExperienceResponsibility>? ExperienceResponsibilities { get; set; }
+        public DbSet<ExperienceProject>? ExperienceProjects { get; set; }
     }
 }
