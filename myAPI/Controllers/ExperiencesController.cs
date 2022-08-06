@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using myAPI.BussinessLayer.Concrete;
 using myAPI.DataAccessLayer.EntityFramework;
+using myAPI.EntityLayer.Concrete;
 
 namespace myAPI.Controllers
 {
@@ -10,13 +11,15 @@ namespace myAPI.Controllers
     {
         ExperienceManager manager = new ExperienceManager(new EfExperienceRepository());
 
+        // GET: api/Experiences
         [HttpGet]
-        public IActionResult All()
+        public IActionResult GetAll()
         {
             var values = manager.TGetExperiencesWithNestedTables();
             return Ok(values);
         }
 
+        // GET: api/Experiences/10
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -35,6 +38,29 @@ namespace myAPI.Controllers
                 manager.TDeleteWithNestedTables(experience);
                 return Ok();
             }
+        }
+
+        [HttpPost]
+        public IActionResult Insert(Experience experience)
+        {
+            manager.TAddWithNestedTables(experience);
+            return Ok(experience);
+        }
+
+        [HttpPut]
+        public IActionResult Update(Experience experience)
+        {
+            try
+            {
+                manager.TUpdateWithNestedTables(experience);
+                return Ok(experience);
+
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
+            }
+
         }
     }
 }

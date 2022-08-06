@@ -52,5 +52,15 @@ namespace myAPI.BussinessLayer.Concrete
         {
             return _experienceDal.GetByIdWithNestedTables(id);
         }
+
+        public void TAddWithNestedTables(Experience experience)
+        {
+            _experienceDal.InsertWithNestedTables(experience);
+        }
+
+        public void TUpdateWithNestedTables(Experience experience)
+        {
+            _experienceDal.UpdateWithNestedTables(experience);
+        }
     }
 }

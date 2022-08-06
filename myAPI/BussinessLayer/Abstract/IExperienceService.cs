@@ -7,5 +7,7 @@ namespace myAPI.BussinessLayer.Abstract
         public List<Experience> TGetExperiencesWithNestedTables();
         Experience TGetByIdWithNestedTables(int id);
         void TDeleteWithNestedTables(Experience experience);
+        void TAddWithNestedTables(Experience experience);
+        void TUpdateWithNestedTables(Experience experience);
     }
 }

@@ -4,6 +4,7 @@ using myAPI.DataAccessLayer.Concrete.EntityFramework;
 using myAPI.DataAccessLayer.Contexts;
 using myAPI.EntityLayer.Concrete;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace myAPI.DataAccessLayer.EntityFramework
 {
@@ -31,13 +32,25 @@ namespace myAPI.DataAccessLayer.EntityFramework
 
         public void DeleteWithNestedTables(Experience experience)
         {
-
-            //Experience item = (Experience)c.Experiences
-            //    .Include(x => x.ExperienceResponsibilities)
-            //    .Include(x => x.ExperienceProjects);
             c.RemoveRange(experience.ExperienceResponsibilities);
             c.RemoveRange(experience.ExperienceProjects);
             c.Remove(experience);
+            c.SaveChanges();
+        }
+
+        public void InsertWithNestedTables(Experience experience)
+        {
+            c.AddRange(experience.ExperienceResponsibilities);
+            c.AddRange(experience.ExperienceProjects);
+            c.Add(experience);
+            c.SaveChanges();
+        }
+
+        public void UpdateWithNestedTables(Experience experience)
+        {
+            c.UpdateRange(experience.ExperienceResponsibilities);
+            c.UpdateRange(experience.ExperienceProjects);
+            c.Update(experience);
             c.SaveChanges();
         }
     }
