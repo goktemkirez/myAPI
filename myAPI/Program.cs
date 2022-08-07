@@ -19,7 +19,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(
-    options => options.WithOrigins("http://localhost:3000").AllowAnyMethod().WithOrigins("https://www.goktemkirez.com/").AllowAnyMethod()
+    options => options.WithOrigins("https://www.goktemkirez.com").AllowAnyMethod().WithOrigins("http://localhost:3000").AllowAnyMethod()
     );
 
 app.UseAuthorization();
