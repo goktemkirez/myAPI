@@ -15,52 +15,27 @@ namespace myAPI.BussinessLayer.Concrete
 
         public void TAdd(Experience t)
         {
-            throw new NotImplementedException();
+            _experienceDal.InsertWithNestedTables(t);
         }
 
         public void TDelete(Experience t)
         {
-            _experienceDal.Delete(t);
-        }
-
-        public List<Experience> TGetExperiencesWithNestedTables()
-        {
-            return _experienceDal.GetExperiencesWithNestedTables();
+            _experienceDal.DeleteWithNestedTables(t);
         }
 
         public Experience TGetById(int id)
         {
-            return _experienceDal.GetById(id);
+            return _experienceDal.GetByIdWithNestedTables(id);
         }
 
         public void TUpdate(Experience t)
         {
-            throw new NotImplementedException();
+            _experienceDal.UpdateWithNestedTables(t);
         }
 
         public List<Experience> TGetAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public void TDeleteWithNestedTables(Experience experience)
-        {
-            _experienceDal.DeleteWithNestedTables(experience);
-        }
-
-        public Experience TGetByIdWithNestedTables(int id)
-        {
-            return _experienceDal.GetByIdWithNestedTables(id);
-        }
-
-        public void TAddWithNestedTables(Experience experience)
-        {
-            _experienceDal.InsertWithNestedTables(experience);
-        }
-
-        public void TUpdateWithNestedTables(Experience experience)
-        {
-            _experienceDal.UpdateWithNestedTables(experience);
+            return _experienceDal.GetExperiencesWithNestedTables();
         }
     }
 }

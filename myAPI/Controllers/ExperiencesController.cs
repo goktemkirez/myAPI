@@ -15,7 +15,7 @@ namespace myAPI.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var values = manager.TGetExperiencesWithNestedTables();
+            var values = manager.TGetAll();
             return Ok(values);
         }
 
@@ -23,19 +23,19 @@ namespace myAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var experience = manager.TGetByIdWithNestedTables(id);
+            var experience = manager.TGetById(id);
             return experience == null ? NotFound() : Ok(experience);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var experience = manager.TGetByIdWithNestedTables(id);
+            var experience = manager.TGetById(id);
             if (experience == null)
                 return NotFound();
             else
             {
-                manager.TDeleteWithNestedTables(experience);
+                manager.TDelete(experience);
                 return Ok();
             }
         }
@@ -43,7 +43,7 @@ namespace myAPI.Controllers
         [HttpPost]
         public IActionResult Insert(Experience experience)
         {
-            manager.TAddWithNestedTables(experience);
+            manager.TAdd(experience);
             return Ok(experience);
         }
 
@@ -52,7 +52,7 @@ namespace myAPI.Controllers
         {
             try
             {
-                manager.TUpdateWithNestedTables(experience);
+                manager.TUpdate(experience);
                 return Ok(experience);
 
             }
