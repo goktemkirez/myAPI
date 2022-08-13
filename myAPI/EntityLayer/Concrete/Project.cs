@@ -11,6 +11,6 @@ namespace myAPI.EntityLayer.Concrete
         public string? VideoUrl { get; set; }
         public string? CodeUrl { get; set; }
         public string? LiveUrl { get; set; }
-
+        public int? Sorting { get; set; }
     }
 }

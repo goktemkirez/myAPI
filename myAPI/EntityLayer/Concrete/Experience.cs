@@ -13,5 +13,6 @@ namespace myAPI.EntityLayer.Concrete
         public List<ExperienceResponsibility>? ExperienceResponsibilities { get; set; }
         public List<ExperienceProject>? ExperienceProjects { get; set; }
         public string? Website { get; set; }
+        public int? Sorting { get; set; }
     }
 }

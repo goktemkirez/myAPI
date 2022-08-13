@@ -35,7 +35,7 @@ namespace myAPI.BussinessLayer.Concrete
 
         public List<Experience> TGetAll()
         {
-            return _experienceDal.GetExperiencesWithNestedTables();
+            return _experienceDal.GetExperiencesWithNestedTables().OrderBy(x => x.Sorting).ToList();
         }
     }
 }

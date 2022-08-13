@@ -25,7 +25,7 @@ namespace myAPI.BussinessLayer.Concrete
 
         public List<Project> TGetAll()
         {
-            return _projectDal.GetAll();
+            return _projectDal.GetAll().OrderBy(x => x.Sorting).ToList();
         }
 
         public Project TGetById(int id)
